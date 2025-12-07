@@ -1,0 +1,36 @@
+package com;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class SecondLargest {
+
+	static Scanner sc=new Scanner(System.in);
+	public static void main(String[] args) {
+		System.out.println("Enter the size of array");
+		int size=sc.nextInt();
+		int arr[]= new int[size];
+		int firstmax=Integer.MIN_VALUE;
+		int secondmax=Integer.MIN_VALUE;
+		
+		for(int i=0;i<arr.length;i++) {
+			System.out.println("Enter " +i+" number:" );
+			arr[i]=sc.nextInt();
+		}
+		System.out.println("Given Array " +Arrays.toString(arr));
+		
+		for(int i=0;i<=arr.length-1;i++) {
+			if(arr[i]>firstmax) {
+				secondmax=firstmax;
+				firstmax=arr[i];
+			}
+				if( arr[i]>secondmax && arr[i]!=firstmax) {
+					secondmax=arr[i];
+				}
+			}
+		System.out.println("Second largest element t in the array is " +secondmax);
+		
+
+	}
+
+}
