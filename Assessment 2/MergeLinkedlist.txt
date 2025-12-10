@@ -1,0 +1,30 @@
+package com;
+
+import java.util.Collections;
+import java.util.LinkedList;
+
+public class MergeLinkedlist {
+
+	public static void main(String[] args) {
+		LinkedList<Integer> li1=new LinkedList();
+		li1.add(1);
+		li1.add(3);
+		li1.add(5);
+		LinkedList<Integer> li2=new LinkedList();
+		li2.add(2);
+		li2.add(4);
+		li2.add(6);
+		LinkedList li3=new LinkedList();
+		for(int i:li1) {
+			if(!li3.contains(i)) 
+				li3.add(i);
+			}
+		for(int i:li2) {
+			if(!li3.contains(i))
+				li3.add(i);
+		}
+		Collections.sort(li3);
+		System.out.println(li3);
+		}
+
+	}

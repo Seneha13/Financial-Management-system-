@@ -1,0 +1,50 @@
+package com;
+
+import java.util.*;
+
+public class Anagram {
+
+	static Scanner sc=new Scanner(System.in);
+	public static void main(String[] args) {
+		
+		System.out.println("Enter the size of array");
+		int size=sc.nextInt();
+		String word[]= new String[size];
+		
+		for(int i=0;i<word.length;i++) {
+			System.out.println("Enter " +i+" string:" );
+			word[i]=sc.next();
+		}
+		System.out.println("Given Array "+Arrays.toString(word));
+		boolean[]visited=new boolean[word.length];
+		for(int i=0;i<word.length;i++) {
+			if(visited[i])
+				continue;
+			System.out.print("Anagram are ["+word[i]);
+			visited[i]=true;
+			for(int j=i+1;j<word.length;j++) {
+				if(isAnagram(word[i],word[j])) {
+					System.out.print(","+word[j]);
+					visited[j]=true;
+				}
+			}
+			System.out.println("]");
+		}
+	}
+
+public static boolean isAnagram (String a,String b) {
+	if(a.length()!=b.length())
+		return false;
+	
+		a.toLowerCase();
+		b.toLowerCase();
+		char[]a1=a.toCharArray();
+		char[]b1=b.toCharArray();
+		Arrays.sort(a1);
+		Arrays.sort(b1);
+		
+		return Arrays.equals(a1, b1);
+		
+	}
+}
+

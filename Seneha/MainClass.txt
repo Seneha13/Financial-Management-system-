@@ -1,0 +1,151 @@
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
+
+public class MainMethod {
+	static Scanner sc=new Scanner(System.in);
+	static List<AirLine>Flights=new LinkedList();
+	public static void add() {
+		
+		System.out.println("Enter how many flight want to add in the database ");
+		int size=sc.nextInt();
+		for(int i=0;i<size;i++) {
+			System.out.println("Enter flight number:");
+			int fno=sc.nextInt();
+			System.out.println("Enter flight name:");
+			String fname=sc.next();
+			System.out.println("Enter Source of the flight:");
+			String source=sc.next();
+			System.out.println("Enter the destination:");
+			String destination=sc.next();
+			System.out.println("Enter the depature time:");
+			String dt=sc.next();
+			System.out.println("Enter the arrival time:");
+			String at=sc.next();
+			Flights.add(new AirLine(fno,fname,source,destination,dt,at));
+		
+		}
+		System.out.println(size+"Flights addedd successfuly");
+		view();
+	}
+	public static void view() {
+		if(Flights.isEmpty()) 
+			System.out.println("Yet Flights are not added to databases");
+			
+		else {
+			System.out.println("Fligh no	|	Flight name 	|	Source	|	Destination	|	Departure Time	|	Arrival Time	| ");
+			for(AirLine f:Flights) {
+				System.out.println( f.fno+"\t\t"+f.fname+"\t\t"+f.source+"\t\t"+f.destination+"\t\t\t"+f.departuretime+"\t\t\t"+f.arrivaltime);
+			}
+			
+		}
+		
+	}
+	public static void searchbyno() {
+		boolean found=true;
+		if(Flights.isEmpty()) {
+			System.out.println("Yet Flights are not added to databases");
+			add();
+		}
+		else {
+			System.out.println("Enter the flight number to be searched:");
+			int fno=sc.nextInt();
+			for(AirLine f:Flights) {
+				if(f.fno==fno) {
+					System.out.println("FLight found");
+					System.out.println("Fligh no	|	Flight name 	|	Source	|	Destination	|	Departure Time	|	Arrival Time	| ");
+					System.out.println( f.fno+"\t\t"+f.fname+"\t\t"+f.source+"\t\t"+f.destination+"\t\t\t"+f.departuretime+"\t\t\t"+f.arrivaltime);
+					found=false;
+				}
+					
+			}
+		}
+		if(found) {
+		System.out.println("Flight not found");
+		return;
+		}
+	}
+	public static void update() {
+		boolean found=true;
+		if(Flights.isEmpty()) 
+			System.out.println("Yet database are emplty Flights are to be added ");
+		else {
+			System.out.println("Enter the flight number to be searched:");
+			int fno=sc.nextInt();
+			for(AirLine f:Flights) {
+				if(f.fno==fno) {
+					System.out.println("Enter fno");
+					int fnoo=sc.nextInt();
+					f.fno=fnoo;
+					System.out.println("Enter fname");
+					String fname=sc.next();
+					f.fname=fname;
+					System.out.println("Enter source");
+					String source=sc.next();
+					f.source=source;
+					System.out.println("Enter destination");
+					String destination=sc.next();
+					f.destination=destination;
+					System.out.println("Enter departure time");
+					String dt=sc.next();
+					f.departuretime=dt;
+					System.out.println("Enter arrival time");
+					String at=sc.next();
+					f.arrivaltime=at;
+					found=false;
+							
+				}
+				System.out.println("Flight updated successfully!!!");
+				view();		
+			}
+			
+		}
+		if(found) {
+		System.out.println("Invalid flight number");
+		return;
+		}
+	}
+	public static void delete() {
+		boolean found=true;
+		if(Flights.isEmpty()) 
+			System.out.println("Yet database are empty Flights are to be added");
+		else {
+			System.out.println("Enter the flight number to be searched:");
+			int fno=sc.nextInt();
+			for(AirLine f:Flights) {
+				if(f.fno==fno) {
+					Flights.remove(f);
+					System.out.println("FLight deleted successfully");
+					found=false;
+					view();
+				}
+		}
+		}
+		if(found) {
+		System.out.println("Invalid flight no");
+		return;
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		
+		System.out.println("----------AirLine Management System-----------");
+		while(true) {
+		System.out.println("1.Add Flights \n2.View all Flights \n3.Search Flight by Flightnumber \n4.Update Flight \n5.Delete Flight \n6.Exit ");
+		int choice=sc.nextInt();
+			switch(choice) {
+			case 1: add();break;
+			case 2: view();break;
+			case 3:searchbyno();break;
+			case 4:update();break;
+			case 5:delete();break;
+			case 6:System.out.println("Exisiting form the process...........GoodBye!!!!\n------------- Have a Nice day!!!!---------------------");
+			return;
+			default:System.out.println("Invalid choice number");break;
+			}
+		}
+
+	}
+
+}

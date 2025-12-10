@@ -1,0 +1,26 @@
+import java.util.Comparator;
+
+public class AirLine {
+	int fno;
+	String fname;
+	String source;
+	String destination;
+	String departuretime;
+	String arrivaltime;
+	public AirLine(int fno, String fname, String source, String destination, String departuretime, String arrivaltime) {
+		super();
+		this.fno = fno;
+		this.fname = fname;
+		this.source = source;
+		this.destination = destination;
+		this.departuretime = departuretime;
+		this.arrivaltime = arrivaltime;
+	}
+	@Override
+	public String toString() {
+		return "AirLine [fno=" + fno + ", fname=" + fname + ", source=" + source + ", destination=" + destination
+				+ ", departuretime=" + departuretime + ", arrivaltime=" + arrivaltime + "]";
+	}
+	
+
+}

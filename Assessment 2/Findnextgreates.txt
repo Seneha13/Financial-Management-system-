@@ -1,0 +1,44 @@
+package com;
+
+import java.util.Arrays;
+
+public class GreatestArray {
+
+	public static void main(String[] args) {
+		
+		int arr1[]= {4,5,2,25};
+		int arr2[]= {13,7,6,12};
+		for(int i=0;i<arr1.length;i++) {
+			boolean isFound=false;
+			for(int j=i+1;j<arr2.length;j++) {
+				if(arr1[j]>arr1[i]) {
+					arr1[i]=arr1[j];
+					isFound=true;
+					break;
+				}
+			}
+			if(!isFound) {
+				arr1[i]=-1;
+			}
+		}
+		for(int i=0;i<arr2.length;i++) {
+			boolean isFound=false;
+			for(int j=i+1;j<arr2.length;j++) {
+				if(arr2[j]>arr2[i]) {
+					arr2[i]=arr2[j];
+					isFound=true;
+					break;
+				}
+			}
+			if(!isFound) {
+				arr2[i]=-1;
+			}
+		}
+		
+		System.out.println("Array one after getting greatest of next we get: "+Arrays.toString(arr1));
+		System.out.println("Array two after getting greatest of next we get: "+Arrays.toString(arr2));
+		
+
+	}
+
+}
