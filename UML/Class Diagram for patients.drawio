@@ -1,0 +1,65 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" version="29.1.1">
+  <diagram name="Page-1" id="d3IRzejYajHPzvfekM6D">
+    <mxGraphModel dx="1603" dy="2034" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="0m7bg232uwLSCVRhIBvS-1" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Patient&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;-name: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;-age:int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;-number:long&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+department:String&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+book appointment()&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+Make Payment()&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+cancel appointment()&lt;/p&gt;" vertex="1">
+          <mxGeometry height="160" width="170" x="110" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="0m7bg232uwLSCVRhIBvS-2" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Receptionist&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+department: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;-Patient name:String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+date:int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;-patient age:int&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+Check availability()&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+Confirm Appointment()&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+Patient details()&lt;/p&gt;" vertex="1">
+          <mxGeometry height="165" width="180" x="324" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="0m7bg232uwLSCVRhIBvS-4" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Pharmacist&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;-no of medicines: int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+available or not:String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+total amount:long&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+Medicine Stocks()&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+issue medicine()&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+Generate bill()&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+pay()&lt;/p&gt;" vertex="1">
+          <mxGeometry height="160" width="180" x="324" y="-120" as="geometry" />
+        </mxCell>
+        <mxCell id="0m7bg232uwLSCVRhIBvS-6" edge="1" parent="1" source="0m7bg232uwLSCVRhIBvS-1" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="520" y="420" as="sourcePoint" />
+            <mxPoint x="520" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0m7bg232uwLSCVRhIBvS-15" connectable="0" parent="0m7bg232uwLSCVRhIBvS-6" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;span style=&quot;font-size: 20px;&quot;&gt;*..*&lt;/span&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.0111" as="geometry">
+            <mxPoint x="-102" y="-20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0m7bg232uwLSCVRhIBvS-8" edge="1" parent="1" source="0m7bg232uwLSCVRhIBvS-1" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.296;entryY=-0.017;entryDx=0;entryDy=0;entryPerimeter=0;" target="0m7bg232uwLSCVRhIBvS-2" value="">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="460" y="400" as="sourcePoint" />
+            <mxPoint x="194" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0m7bg232uwLSCVRhIBvS-9" edge="1" parent="1" source="0m7bg232uwLSCVRhIBvS-1" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.333;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="0m7bg232uwLSCVRhIBvS-4" value="">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="460" y="400" as="sourcePoint" />
+            <mxPoint x="620" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0m7bg232uwLSCVRhIBvS-10" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;Doctor&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;-Patient name: String&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style: solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+Confirm Appointment()&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+Prescribe Medicine()&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+Medicine Stock()&lt;/p&gt;" vertex="1">
+          <mxGeometry height="140" width="190" x="520" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="0m7bg232uwLSCVRhIBvS-12" edge="1" parent="1" source="0m7bg232uwLSCVRhIBvS-10" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.322;exitY=0.031;exitDx=0;exitDy=0;entryX=0.593;entryY=0.995;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" target="0m7bg232uwLSCVRhIBvS-4" value="">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="460" y="400" as="sourcePoint" />
+            <mxPoint x="620" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0m7bg232uwLSCVRhIBvS-13" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;entryX=0.419;entryY=1.014;entryDx=0;entryDy=0;entryPerimeter=0;" target="0m7bg232uwLSCVRhIBvS-10" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="490" y="490" />
+            </Array>
+            <mxPoint x="490" y="480" as="sourcePoint" />
+            <mxPoint x="570" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0m7bg232uwLSCVRhIBvS-14" connectable="0" parent="0m7bg232uwLSCVRhIBvS-13" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;1..*&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.8563" y="-2" as="geometry">
+            <mxPoint x="-20" y="-23" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

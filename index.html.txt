@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin EMI Dashboard - Wireframe</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+    }
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 10px 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 4px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    }
+    .hidden {
+      display: none;
+    }
+    .form-group {
+      margin-bottom: 12px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    button {
+      padding: 8px 16px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:disabled {
+      background: #999;
+      cursor: not-allowed;
+    }
+    nav {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+    nav button {
+      margin-right: 8px;
+      margin-bottom: 8px;
+      background: #ecf0f1;
+      color: #2c3e50;
+    }
+    nav button.active-tab {
+      background: #3498db;
+      color: #fff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 6px 8px;
+      text-align: left;
+    }
+    th {
+      background: #f9f9f9;
+    }
+    .status-badge {
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+    .status-pending { background: #f1c40f33; color: #7d6608; }
+    .status-approved { background: #2ecc7133; color: #145a32; }
+    .status-rejected { background: #e74c3c33; color: #7b241c; }
+    .status-active { background: #2ecc7133; color: #145a32; }
+    .status-suspended { background: #e67e2233; color: #7e5109; }
+    .status-deactivated { background: #e74c3c33; color: #7b241c; }
+
+    .stats {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+      flex-wrap: wrap;
+    }
+    .stat-box {
+      background: #f9f9f9;
+      padding: 8px 12px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .filters input, .filters select {
+      width: auto;
+      min-width: 180px;
+    }
+    .empty-state {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #777;
+      font-style: italic;
+    }
+    .section-title {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .section-subtitle {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 16px;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .col-half {
+      flex: 1 1 45%;
+      min-width: 260px;
+    }
+    .log {
+      font-size: 12px;
+      background: #f9f9f9;
+      padding: 8px;
+      border-radius: 3px;
+      max-height: 160px;
+      overflow-y: auto;
+    }
+    .log-entry {
+      margin-bottom: 4px;
+    }
+    .error-msg {
+      color: #c0392b;
+      font-size: 12px;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Admin EMI Management - Wireframe</h1>
+  </header>
+
+  <!-- LOGIN PAGE -->
+  <div class="container" id="login-page">
+    <h2>Admin Login</h2>
+    <p style="font-size: 13px; color: #666;">Wireframe only – no real authentication. Use any username/password to continue.</p>
+    <div class="form-group">
+      <label for="admin-username">Admin ID / Username</label>
+      <input type="text" id="admin-username" placeholder="Enter admin username" />
+    </div>
+    <div class="form-group">
+      <label for="admin-password">Password</label>
+      <input type="password" id="admin-password" placeholder="Enter password" />
+    </div>
+    <button id="btn-login">Login</button>
+    <div id="login-error" class="error-msg" style="display:none;">
+      Invalid credentials. Please enter username and password. (Wireframe validation)
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="container hidden" id="dashboard">
+    <h2>Admin Dashboard</h2>
+    <p style="font-size: 13px; color: #666;">Simple static UI to represent admin actions: view users, verify documents, activate EMI cards, and manage accounts.</p>
+
+    <nav>
+      <button class="active-tab" data-tab="tab-users">View All Users</button>
+      <button data-tab="tab-verify">Verify User Documents</button>
+      <button data-tab="tab-emi">Activate EMI Cards</button>
+      <button data-tab="tab-manage">Manage Accounts</button>
+    </nav>
+
+    <!-- View all users -->
+    <div id="tab-users" class="tab-section">
+      <div class="section-title">All Registered Users</div>
+      <div class="section-subtitle">
+        Shows list of users, search, filters, pagination (conceptual).
+      </div>
+
+      <div class="stats">
+        <div class="stat-box"><strong>Total Users:</strong> 5</div>
+        <div class="stat-box"><strong>Pending:</strong> 2</div>
+        <div class="stat-box"><strong>Approved:</strong> 2</div>
+        <div class="stat-box"><strong>Rejected:</strong> 1</div>
+      </div>
+
+      <div class="filters">
+        <div>
+          <label style="font-size: 12px;">Filter by Status</label>
+          <select id="filter-status">
+            <option value="all">All</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size: 12px;">Search by Name or Email</label>
+          <input type="text" id="search-user" placeholder="Type to search..." />
+        </div>
+      </div>
+
+      <table id="users-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Card Type</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="users-tbody">
+          <!-- Filled by JS for the wireframe -->
+        </tbody>
+      </table>
+
+      <div id="users-empty" class="empty-state" style="display:none;">
+        No users match the selected filter or search.
+      </div>
+
+      <div style="margin-top: 10px; font-size: 12px; color: #666;">
+        Pagination (wireframe): Page 1 of 1 | &laquo; Prev | Next &raquo;
+      </div>
+    </div>
+
+    <!-- Verify user documents -->
+    <div id="tab-verify" class="tab-section hidden">
+      <div class="section-title">Verify User Documents</div>
+      <div class="section-subtitle">
+        View uploaded documents, user details, and approve/reject conceptually.
+      </div>
+
+      <div class="row">
+        <div class="col-half">
+          <h4 style="margin-top:0;">Select User</h4>
+          <div class="form-group">
+            <label for="verify-user-select">User</label>
+            <select id="verify-user-select">
+              <option>Ravi Kumar (Pending)</option>
+              <option>Priya Sharma (Pending)</option>
+              <option>Already Approved User</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>User Details</label>
+            <div style="font-size: 13px; background:#f9f9f9; padding:8px; border-radius:3px;">
+              <strong>Name:</strong> Ravi Kumar<br />
+              <strong>Email:</strong> ravi.kumar@example.com<br />
+              <strong>Card Type:</strong> Gold EMI Card<br />
+              <strong>Status:</strong> Pending Verification
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Uploaded Documents</label>
+            <ul style="font-size: 13px; padding-left:18px;">
+              <li>Proof of Identity (PDF)</li>
+              <li>Proof of Address (JPEG)</li>
+            </ul>
+          </div>
+
+          <button>Open Document View</button>
+          <button style="background:#27ae60; margin-left:8px;">Approve</button>
+          <button style="background:#c0392b; margin-left:8px;">Reject</button>
+        </div>
+
+        <div class="col-half">
+          <h4 style="margin-top:0;">Document Preview (Wireframe)</h4>
+          <div style="border:1px solid #ddd; height:200px; display:flex; align-items:center; justify-content:center; color:#888; font-size:13px;">
+            Document viewer placeholder (PDF/Image would appear here)
+          </div>
+          <div style="margin-top:10px;">
+            <button>Download Document</button>
+          </div>
+          <div class="error-msg" style="margin-top:8px;">
+            If file is corrupted or not found, show a clear error message here.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Activate EMI cards -->
+    <div id="tab-emi" class="tab-section hidden">
+      <div class="section-title">Activate EMI Card</div>
+      <div class="section-subtitle">
+        After verification, admin can validate and activate user EMI cards (UI only).
+      </div>
+
+      <div class="row">
+        <div class="col-half">
+          <div class="form-group">
+            <label for="emi-user-select">Select User (Verified)</label>
+            <select id="emi-user-select">
+              <option>Ravi Kumar (Verified)</option>
+              <option>Priya Sharma (Verified)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Card Details (Wireframe)</label>
+            <div style="font-size: 13px; background:#f9f9f9; padding:8px; border-radius:3px;">
+              <strong>Proposed Card Number:</strong> **** **** **** 1234<br />
+              <strong>Card Type:</strong> Gold EMI Card<br />
+              <strong>Credit Limit:</strong> ₹ 80,000<br />
+              <strong>Tenure Options:</strong> 3 / 6 / 9 / 12 months
+            </div>
+          </div>
+
+          <button>Validate Card Details</button>
+          <button style="background:#27ae60; margin-left:8px;">Activate Card</button>
+
+          <div style="margin-top:10px; font-size:12px; color:#666;">
+            On activation, the system would:
+            <ul style="margin-top:4px;">
+              <li>Link card details to user account</li>
+              <li>Mark user status as "Active"</li>
+              <li>Trigger email/SMS notification to user</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-half">
+          <h4 style="margin-top:0;">Activation Summary (Wireframe)</h4>
+          <div style="font-size: 13px; background:#f9f9f9; padding:8px; border-radius:3px;">
+            <strong>User:</strong> Ravi Kumar<br />
+            <strong>Current Status:</strong> Approved (Ready for Activation)<br />
+            <strong>New Status after Activation:</strong> Active<br /><br />
+            A confirmation message or modal would appear here after activation.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manage accounts -->
+    <div id="tab-manage" class="tab-section hidden">
+      <div class="section-title">Manage User Accounts</div>
+      <div class="section-subtitle">
+        Suspend or deactivate accounts, and view audit logs (concept-only).
+      </div>
+
+      <div class="row">
+        <div class="col-half">
+          <h4 style="margin-top:0;">Account Status Control</h4>
+          <div class="form-group">
+            <label for="manage-user-select">Select User</label>
+            <select id="manage-user-select">
+              <option>Ravi Kumar (Active)</option>
+              <option>Priya Sharma (Active)</option>
+              <option>Anita Singh (Suspended)</option>
+              <option>Test User (Deactivated)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Current Status</label>
+            <div style="font-size: 13px; background:#f9f9f9; padding:8px; border-radius:3px;">
+              <strong>Status:</strong> Active
+            </div>
+          </div>
+
+          <button style="background:#e67e22;">Suspend Account</button>
+          <button style="background:#c0392b; margin-left:8px;">Deactivate Account</button>
+          <button style="background:#27ae60; margin-left:8px;">Reactivate Account</button>
+
+          <p style="font-size:12px; color:#666; margin-top:10px;">
+            When account is suspended or deactivated, user access is immediately restricted (no login or actions).
+          </p>
+        </div>
+
+        <div class="col-half">
+          <h4 style="margin-top:0;">Admin Action Audit Log</h4>
+          <div class="log">
+            <div class="log-entry">
+              [2025-12-05 10:32] AdminID: admin01 suspended user: user_102
+            </div>
+            <div class="log-entry">
+              [2025-12-05 09:15] AdminID: admin02 activated EMI card for user: user_088
+            </div>
+            <div class="log-entry">
+              [2025-12-04 18:47] AdminID: admin01 deactivated user: user_055
+            </div>
+            <div class="log-entry">
+              [2025-12-04 15:20] AdminID: admin03 approved KYC documents for user: user_103
+            </div>
+            <div class="log-entry">
+              [2025-12-04 12:01] AdminID: admin01 created new admin account: admin03
+            </div>
+          </div>
+          <p style="font-size:12px; color:#666; margin-top:8px;">
+            Each action captures timestamp, admin ID, and affected user ID (UI representation only).
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Very simple JS for wireframe behavior
+
+    // Login handling (fake)
+    const loginPage = document.getElementById('login-page');
+    const dashboard = document.getElementById('dashboard');
+    const loginBtn = document.getElementById('btn-login');
+    const loginError = document.getElementById('login-error');
+
+    loginBtn.addEventListener('click', function() {
+      const username = document.getElementById('admin-username').value.trim();
+      const password = document.getElementById('admin-password').value.trim();
+
+      // Simple front-end check: require both fields
+      if (!username || !password) {
+        loginError.style.display = 'block';
+      } else {
+        loginError.style.display = 'none';
+        loginPage.classList.add('hidden');
+        dashboard.classList.remove('hidden');
+      }
+    });
+
+    // Simple tab switching
+    const tabButtons = document.querySelectorAll('nav button');
+    const tabSections = document.querySelectorAll('.tab-section');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+
+        tabButtons.forEach(b => b.classList.remove('active-tab'));
+        btn.classList.add('active-tab');
+
+        tabSections.forEach(sec => {
+          if (sec.id === target) {
+            sec.classList.remove('hidden');
+          } else {
+            sec.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Fake user data for View All Users wireframe
+    const users = [
+      { id: 1, name: 'Ravi Kumar', email: 'ravi.kumar@example.com', cardType: 'Gold', status: 'pending' },
+      { id: 2, name: 'Priya Sharma', email: 'priya.sharma@example.com', cardType: 'Platinum', status: 'pending' },
+      { id: 3, name: 'Anita Singh', email: 'anita.singh@example.com', cardType: 'Silver', status: 'approved' },
+      { id: 4, name: 'Rahul Verma', email: 'rahul.verma@example.com', cardType: 'Gold', status: 'approved' },
+      { id: 5, name: 'Test User', email: 'test.user@example.com', cardType: 'Silver', status: 'rejected' }
+    ];
+
+    const usersTbody = document.getElementById('users-tbody');
+    const usersEmpty = document.getElementById('users-empty');
+    const filterStatus = document.getElementById('filter-status');
+    const searchUser = document.getElementById('search-user');
+
+    function renderUsers() {
+      const statusValue = filterStatus.value;
+      const searchValue = searchUser.value.trim().toLowerCase();
+
+      const filtered = users.filter(u => {
+        let statusMatch = (statusValue === 'all') || (u.status === statusValue);
+        let searchMatch =
+          !searchValue ||
+          u.name.toLowerCase().includes(searchValue) ||
+          u.email.toLowerCase().includes(searchValue);
+
+        return statusMatch && searchMatch;
+      });
+
+      usersTbody.innerHTML = '';
+
+      if (filtered.length === 0) {
+        usersEmpty.style.display = 'block';
+        return;
+      } else {
+        usersEmpty.style.display = 'none';
+      }
+
+      filtered.forEach((u, index) => {
+        const tr = document.createElement('tr');
+
+        const statusClassMap = {
+          pending: 'status-pending',
+          approved: 'status-approved',
+          rejected: 'status-rejected'
+        };
+        const statusLabel = u.status.charAt(0).toUpperCase() + u.status.slice(1);
+
+        tr.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${u.name}</td>
+          <td>${u.email}</td>
+          <td>${u.cardType}</td>
+          <td><span class="status-badge ${statusClassMap[u.status]}">${statusLabel}</span></td>
+        `;
+
+        usersTbody.appendChild(tr);
+      });
+    }
+
+    filterStatus.addEventListener('change', renderUsers);
+    searchUser.addEventListener('input', renderUsers);
+
+    // Initial render
+    renderUsers();
+  </script>
+</body>
+</html>
